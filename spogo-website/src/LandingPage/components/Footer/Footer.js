@@ -136,7 +136,7 @@ const Footer = () => {
                 />
               </a>
             </div>
-            <p>© 2021 Spogo | All rights reserved</p>
+            <p>© 2022 Spogo | All rights reserved</p>
           </div>
         </div>
       )}
