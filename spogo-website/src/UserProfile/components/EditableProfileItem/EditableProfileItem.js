@@ -542,12 +542,7 @@ const EditableProfileItem = (props) => {
                 <div className="itemTextButtonsContainer">
                   <div
                     className="editableItemTextContainer"
-                    onClick={() => {
-                      handleItemClick(icon)       
-                      mixpanel.track("Specific Item Type Pressed", {
-                        Item: iconToHeaderName,
-                      })
-                    }}
+                    onClick={() => handleItemClick(icon)}
                   >
                     <h1>{title}</h1>
                     {team != undefined && team != null && team != "" && (
@@ -579,6 +574,11 @@ const EditableProfileItem = (props) => {
             // </Link>
             <div
               className="editableItemContainer"
+              onClick={() =>
+                mixpanel.track("Specific Item Type Pressed", {
+                  Item: iconToHeaderName,
+                })
+              }
             >
               <div className="editableItemIconContainer">
                 <ItemIcon iconType={icon} />

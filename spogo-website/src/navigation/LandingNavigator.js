@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import LandingPage from '../LandingPage/screens/LandingPage/LandingPage';
 import LandingPageAbout from '../LandingPage/screens/LandingPageAbout/LandingPageAbout';
@@ -17,7 +19,11 @@ const LandingNavigator = (props) => {
     <Router>
       <Route exact path="/">
         <LandingPage />
+        {/* <Redirect to="/home" /> */}
       </Route>
+      {/* <Route path={'/home'}>
+        <LandingPage />
+      </Route> */}
       <Route path={'/about'}>
         <LandingPageAbout />
       </Route>
