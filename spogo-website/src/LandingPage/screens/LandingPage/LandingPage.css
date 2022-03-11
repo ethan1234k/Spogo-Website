@@ -1,4 +1,5 @@
 @media screen and (min-width: 960px) {
+
   .waitlistFullNameInput {
     margin-right: 20px;
   }
@@ -9,7 +10,7 @@
     justify-content: center;
     /* height: fit-content; */
   }
-
+  
   .landingPageTopImageMockupContainer > img {
     object-fit: contain;
     width: 600px;
@@ -28,7 +29,7 @@
     height: fit-content;
     margin-top: 3%;
   }
-
+  
   .productDescriptionContainerInverted {
     display: flex;
     flex-direction: row;
@@ -36,15 +37,6 @@
     /* border: solid; */
     height: fit-content;
     margin-top: 3%;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .landingPageTopButtonsContainer {
-    display: flex;
-    width: 100%;
-    min-width: 480px;
-    /* justify-content: space-around; */
   }
 }
 
@@ -61,6 +53,10 @@
   font-size: 14px;
 }
 
+
+
+
+
 .landingPageBody {
   display: flex;
   flex-direction: column;
@@ -72,6 +68,8 @@
 
 .topLandingPageContentBannerContainer {
   display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 .landingPageWaitlistContentContainer {
@@ -80,9 +78,12 @@
   flex: 0.5;
   height: 1;
   justify-content: center;
-  padding-left: 5%;
+  padding: 0% 5%;
   padding-bottom: 8%;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  /* padding-left: 8%; */
+  /* padding-top: 5%; */
+  /* border: solid; */
 }
 
 .landingPageWaitlistContentContainer > p {
@@ -107,6 +108,7 @@
   outline: none;
   transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   margin-bottom: 20px;
+  
 }
 
 .waitlistInputContainer > input:focus {
@@ -115,10 +117,11 @@
   color: black;
 }
 
-.waitlistButton {
-  width: 45%;
-  margin-right: 5%;
+.landingPageTopButtonsContainer {
+  display: flex;
 }
+
+
 
 .waitlistButton > button {
   background-color: #22e09a;
@@ -126,9 +129,9 @@
   border-radius: 1000px;
   border: none;
   font-weight: bold;
-  font-size: 14px;
-  width: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  width: 325px;
+  font-family: 'Montserrat', sans-serif;
   margin-right: 50px;
   margin-top: 20px;
 }
@@ -154,15 +157,15 @@
 }
 
 .mainProductHeader {
-  margin-top: 10%;
-  margin-bottom: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
 }
 
 .mainProductHeader > h1 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .productDescription {
@@ -178,7 +181,7 @@
 .productDescription > h1 {
   font-size: 28px;
   font-weight: bold;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .productDescription > h2 {
@@ -278,6 +281,7 @@
   margin-bottom: 5%;
   font-size: 16px;
   text-decoration: none;
+  
 }
 
 .header_column > p:hover {
@@ -290,7 +294,10 @@
   font-size: 12px;
 }
 
+
+
 @media screen and (max-width: 960px) {
+
   .landingPageBody {
     display: flex;
     flex-direction: column;
@@ -338,7 +345,7 @@
     display: flex;
     flex-direction: column;
   }
-
+  
   .waitlistInputContainer > input {
     flex: 1;
     height: 50px;
@@ -351,7 +358,7 @@
     font-weight: 400;
     outline: none;
     transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    font-family: "DM Sans", sans-serif;
+    font-family: 'DM Sans', sans-serif;
     margin-bottom: 20px;
   }
 
@@ -374,7 +381,7 @@
     margin-bottom: 20%;
     /* height: fit-content; */
   }
-
+  
   .landingPageTopImageMockupContainer > img {
     object-fit: contain;
     width: 600px;
@@ -422,6 +429,7 @@
     /* border: solid; */
     height: fit-content;
     margin: 8% 0%;
+
   }
 
   .form_inputs > input:focus {
@@ -432,13 +440,8 @@
 
   .landingPageTopButtonsContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
-  .waitlistButton {
-    width: 95%;
-  }
 
   .waitlistButton > button {
     background-color: #22e09a;
@@ -447,7 +450,7 @@
     border: none;
     font-weight: bold;
     font-size: 16px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .waitlistButton > button:hover {
@@ -503,7 +506,7 @@
     display: flex;
     margin: 8% 0%;
   }
-
+  
   .bottomTabsContainer {
     display: flex;
     width: 100%;
@@ -527,6 +530,7 @@
   .header_column {
     height: 100%;
     text-decoration: none;
+
   }
 
   .header_column > h2 {
@@ -550,10 +554,11 @@
   .copyright {
     color: white;
     font-size: 12px;
-    align-self: center;
-    margin-top: 5%;
+      align-self: center;
+      margin-top: 5%;
+    
   }
-
+  
   .productDescription {
     padding: 2% 15%;
     display: flex;
@@ -563,12 +568,12 @@
     /* border: solid; */
     text-align: left;
   }
-
+  
   .productDescription > h1 {
     font-size: 28px;
     font-weight: bold;
   }
-
+  
   .productDescription > h2 {
     font-size: 20px;
     font-weight: 350;
@@ -582,7 +587,9 @@
   }
 }
 
+
 @media screen and (max-width: 460px) {
+
   .content {
     display: flex;
     width: 100%;
@@ -603,7 +610,6 @@
     font-size: 18px;
     font-weight: 350;
   }
-
   .landingPageTopButtonsContainer {
     display: flex;
     flex-direction: column;

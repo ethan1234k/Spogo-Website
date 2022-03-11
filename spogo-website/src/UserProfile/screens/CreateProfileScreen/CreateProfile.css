@@ -506,10 +506,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 90%;
+    justify-content: flex-end;
+    width: 92%;
+    /* margin-right: 20px; */
     margin-top: 15px;
-    justify-content: space-between;
-
   }
 
   .topRightIconItem {
@@ -538,7 +538,6 @@
     color: white;
     font-size: 16px;
     font-weight: 500;
-    text-align: right;
   }
 
   .settingsItemAddModalOverlay {
@@ -1059,7 +1058,6 @@
     justify-content: flex-end;
     width: 90%;
     margin-top: 20px;
-    justify-content: space-between;
   }
 
   .topRightIconItem {
@@ -1086,7 +1084,6 @@
     width: 100%;
     color: #3eb489;
     font-weight: bold;
-    text-align: right;
   }
 
   .settingsItemAddModalOverlay {
@@ -1667,12 +1664,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
-  }
-
-  .topRightIconsContainer > h1 {
-    font-size: 16px;
   }
 
   .topRightIconItem {
@@ -1700,7 +1693,6 @@
     width: 100%;
     color: #3eb489;
     font-weight: bold;
-    text-align: right;
   }
 
   .settingsItemAddModalOverlay {

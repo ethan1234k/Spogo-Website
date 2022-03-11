@@ -3,7 +3,9 @@ import {
   addVideoImageID,
   addVideoItem,
   getMediaArray,
+  getUserDict,
   getVideoImageID,
+  setMediaArray,
 } from "../../../UserData";
 import "./VideoList.css";
 import { MdAdd, MdDelete, MdClose } from "react-icons/md";
@@ -16,7 +18,6 @@ import firebase from "../../../firebase";
 import { UserDataContext } from "../../../App";
 import { Line } from "rc-progress";
 import Modal from "react-modal";
-import { Mixpanel } from "../../../index";
 
 const VideoList = (props) => {
   const { getUserUID } = useContext(UserDataContext);
@@ -102,13 +103,6 @@ const VideoList = (props) => {
     try {
       await task;
       addVideoItem(getVideoImageID(), mediaReference, type);
-      if (type === "photo") {
-        console.log('TRACK PHOTO')
-        Mixpanel.track("Media Item Uploaded", { "Media Type": "Photo" })
-      } else {
-        console.log('TRACK VIDEO')
-        Mixpanel.track("Media Item Uploaded", { "Media Type": "Video" })
-      }
       addVideoImageID();
       await updateMediaArrayInDB();
       setThisMediaArray([...getMediaArray()]);
@@ -120,8 +114,6 @@ const VideoList = (props) => {
       );
       console.log(e);
     }
-    setUploading(false);
-    setTransferred(0);
   };
 
   //Updates userInfoDict in firebase
@@ -146,11 +138,7 @@ const VideoList = (props) => {
 
   return (
     <div className="videoListContainer">
-      <Modal
-        isOpen={uploading}
-        className="uploadProgressModalContainer"
-        overlayClassName="uploadProgressModalOverlay"
-      >
+      <Modal isOpen={uploading} className="uploadProgressModalContainer" overlayClassName="uploadProgressModalOverlay">
         <div className="uploadProgressModalContent">
           <p>Upload Progress</p>
           <Line percent={transferred} strokeWidth="4" strokeColor="black" />

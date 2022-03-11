@@ -98,7 +98,7 @@ function Header() {
                     onClick={() => {
                       window.location.assign('/auth')
                       mixpanel.track('Header Tabs Pressed', {
-                        'Tab Pressed': 'Log In',
+                        'Tab Pressed': 'Login',
                       })
                     }}
                     type="text"
@@ -112,7 +112,7 @@ function Header() {
                   <button
                     onClick={() =>
                       mixpanel.track('Header Tabs Pressed', {
-                        'Tab Pressed': 'Join Waitlist',
+                        'Tab Pressed': 'Waitlist',
                       })
                     }
                     type="text"

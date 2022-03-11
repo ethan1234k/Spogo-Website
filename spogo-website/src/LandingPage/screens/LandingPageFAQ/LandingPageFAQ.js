@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./LandingPageFAQ.css";
-import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import { FaPlus, FaMinus } from "react-icons/fa";
-import Footer from "../../components/Footer/Footer";
-import WebFont from "webfontloader";
+import React, { useState, useEffect } from 'react';
+import './LandingPageFAQ.css';
+import Header from '../../components/Header/Header';
+import { FaPlus, FaMinus } from 'react-icons/fa';
+import Footer from '../../components/Footer/Footer';
+import WebFont from 'webfontloader';
 
 const LandingPageFAQ = () => {
-  const [FAQOpened, setFAQOpened] = useState(false);
-
   const FAQItem = (props) => {
     let question = props.question;
     let answer = props.answer;
@@ -17,16 +14,16 @@ const LandingPageFAQ = () => {
     useEffect(() => {
       WebFont.load({
         google: {
-          families: ["Montserrat", "Open_Sans"],
-        },
+          families: ['Montserrat', 'Open_Sans']
+        }
       });
-    }, []);
+     }, []);
 
     return (
       <div className="FAQContainer">
         <div className="FAQHeaderContainer">
           <h1
-            style={{ color: FAQOpened ? "#3EB489" : "black" }}
+            style={{ color: FAQOpened ? '#3EB489' : 'black' }}
             onClick={() => setFAQOpened(!FAQOpened)}
           >
             {question}
@@ -35,13 +32,13 @@ const LandingPageFAQ = () => {
             <FaPlus
               className="openCloseIcon"
               onClick={() => setFAQOpened(true)}
-              color={"black"}
+              color={'black'}
             />
           ) : (
             <FaMinus
               className="openCloseIcon"
               onClick={() => setFAQOpened(false)}
-              color={"#3EB489"}
+              color={'#3EB489'}
             />
           )}
         </div>
@@ -50,11 +47,14 @@ const LandingPageFAQ = () => {
     );
   };
 
+
+  
+
   return (
     <>
-      <Header onClick={window.scrollTo(0, 0)} />
+      <Header onClick={window.scrollTo(0,0)} />
       <div className="TitleContainer">
-        <h1>FAQ</h1>
+        <h1 className>FAQ</h1>
       </div>
       <div className="FAQSectionContainer">
         <div className="FAQSectionHeader">
@@ -64,34 +64,10 @@ const LandingPageFAQ = () => {
           question="What is Spogo?"
           answer="Spogo is the premier platform to share your athletic profile. Whether it be to gain exposure to or monetize your name, image and likeness, we’re here to help you along the way."
         />
-        {/* FAQ Item with LINK to Mission Statement */}
-        <div className="FAQContainer">
-          <div className="FAQHeaderContainer">
-            <h1
-              style={{ color: FAQOpened ? "#3EB489" : "black" }}
-              onClick={() => setFAQOpened(!FAQOpened)}
-            >
-              Why did you decide to start Spogo?
-            </h1>
-            {!FAQOpened ? (
-              <FaPlus
-                className="openCloseIcon"
-                onClick={() => setFAQOpened(true)}
-                color={"black"}
-              />
-            ) : (
-              <FaMinus
-                className="openCloseIcon"
-                onClick={() => setFAQOpened(false)}
-                color={"#3EB489"}
-              />
-            )}
-          </div>
-          <div className="FAQAnswer">
-            {FAQOpened ? <h1>You can view our mission statement {' '} <Link to="/about" className="missionStatementLink">here</Link>.</h1> : null}
-          </div>
-        </div>
-        {/* FAQ Item with LINK to Mission Statement */}
+        <FAQItem
+          question="Why did you decide to start Spogo?"
+          answer='You can view our mission statement here.'
+        />
         <FAQItem
           question="Where are you based?"
           answer="We are based in great city of Seattle, Washington."
@@ -138,7 +114,7 @@ const LandingPageFAQ = () => {
           answer="Through your generated URL, anyone can view your profile!"
         />
       </div>
-      <Footer onClick={window.scrollTo(0, 0)} />
+      <Footer onClick={window.scrollTo(0,0)} />
     </>
   );
 };
