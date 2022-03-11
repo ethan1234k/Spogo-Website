@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./JoinWaitlistScreen.css";
+import firebase from "../../../firebase";
+import { MixpanelConsumer } from "react-mixpanel";
+import { useHistory } from "react-router-dom";
 
 const JoinWaitlistScreen = () => {
+  const [email, setEmail] = useState("");
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  let history = useHistory();
+
+  let validator = require("email-validator");
+
+  const validateEmail = () => {
+    if (validator.validate(email)) {
+      addUserToWaitlist();
+      <MixpanelConsumer>
+        {(mixpanel) => mixpanel.track("Waitlist User Added")}
+      </MixpanelConsumer>;
+      history.push("/");
+    } else {
+      setInvalidEmail(true);
+    }
+  };
+
+  const addUserToWaitlist = async () => {
+    await firebase
+      .app("secondary")
+      .auth()
+      .createUserWithEmailAndPassword(email, "password")
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
+
   return (
     <div>
       <div className="joinWaitlistScreenContainer">
@@ -19,19 +50,7 @@ const JoinWaitlistScreen = () => {
                 >
                   Name
                 </p>
-                <input
-                  className="waitlistTextInput"
-                  required
-                  type="name"
-                //   value={email}
-                //   onChange={(text) => {
-                //     setEmail(text.target.value);
-                //     setInvalidEmail(false);
-                //   }}
-                />
-                {/* {invalidEmail && ( */}
-                  {/* <h1 className="waitlistInvalidText">Invalid Email</h1> */}
-                {/* )} */}
+                <input className="waitlistTextInput" required type="name" />
                 <p className="waitlistTextInputHeader">Email</p>
                 <input
                   className="waitlistTextInput"
@@ -39,17 +58,23 @@ const JoinWaitlistScreen = () => {
                   autoCapitalize="none"
                   id="email"
                   type="email"
-                //   value={password}
-                //   onChange={(text) => setPassword(text.target.value)}
+                  value={email}
+                  onChange={(text) => {
+                    setEmail(text.target.value);
+                    setInvalidEmail(false);
+                  }}
                 />
+                {invalidEmail && (
+                  <h1 className="waitlistInvalidText">Invalid Email</h1>
+                )}
               </div>
               <button
                 className="joinWaitlistButton"
                 type="button"
-                style={{marginTop: 15}}
-                // onClick={() => {
-                //   validateLogin();
-                // }}
+                style={{ marginTop: 15 }}
+                onClick={() => {
+                  validateEmail();
+                }}
               >
                 Join Waitlist
               </button>
