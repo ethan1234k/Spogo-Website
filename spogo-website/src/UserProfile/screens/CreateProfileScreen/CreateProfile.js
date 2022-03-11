@@ -1596,124 +1596,81 @@ const CreateProfile = (props) => {
                     Link must start with https://
                   </h1>
                 )}
-              </div>
-              <div>
-                <button
-                  className="addEditItemModalButton"
-                  type={"button"}
-                  onClick={() => handleProfileEditModalSubmission()}
-                >
-                  Confirm
-                </button>
-              </div>
-            </Modal>
-            {/* Profile Edit Modal */}
-            {/* Bio Modal */}
-            <Modal
-              appElement={document.getElementById("root") || undefined}
-              isOpen={bioModalOpen}
-              onRequestClose={() => setBioModalOpen(false)}
-              onAfterOpen={() => setBioHolder(bio)}
-              className="bioModal"
-              overlayClassName="itemAddModalOverlay"
-            >
-              <form>
-                <div className="modalHeaderContainer">
-                  <p>Edit Bio</p>
-                  <MdClose
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      setBioHolder(bio);
-                      setBioModalOpen(false);
-                    }}
-                    size={20}
-                    color={"grey"}
-                  />
-                </div>
-                <textarea
-                  style={{ resize: "none" }}
-                  className="modalTextInputItems"
-                  rows={5}
-                  name={"description"}
-                  value={bioHolder}
-                  onChange={(text) => {
-                    setBioHolder(text.target.value);
-                  }}
-                />
-                <button
-                  className="addEditItemModalButton"
-                  type={"button"}
-                  onClick={() => handleProfileBioSubmission()}
-                >
-                  Confirm
-                </button>
-              </form>
-            </Modal>
-
-            {/* Experience Modal */}
-            <Modal
-              appElement={document.getElementById("root") || undefined}
-              isOpen={experienceModalOpen}
-              onRequestClose={() => {
-                setExperienceModalOpen(false);
-                setExperienceTitleText("");
-                setExperienceTeamText("");
-                setExperienceStartMonth("");
-                setExperienceStartYear("");
-                setExperienceEndMonth("");
-                setExperienceEndYear("");
-                setExperienceDescriptionText("");
-                setInvalidExperienceTitle(false);
-                setInvalidExperienceTeam(false);
-                setInvalidExperienceStartDate(false);
-                setInvalidExperienceEndDate(false);
-                setEndDateBeforeStartDateError(false);
-                setCurrentExperienceText("Currently doing this?");
-                setCurrentExperience(false);
-              }}
-              className="experienceModal"
-              overlayClassName="itemAddModalOverlay"
-            >
-              <div className="expModalContainer">
-                <div className="modalHeaderContainer">
-                  <p>Add Experience</p>
-                  <MdClose
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      setExperienceModalOpen(false);
-                      setExperienceTitleText("");
-                      setExperienceTeamText("");
-                      setExperienceStartMonth("");
-                      setExperienceStartYear("");
-                      setExperienceEndMonth("");
-                      setExperienceEndYear("");
-                      setExperienceDescriptionText("");
-                      setInvalidExperienceTitle(false);
-                      setInvalidExperienceTeam(false);
-                      setInvalidExperienceStartDate(false);
-                      setInvalidExperienceEndDate(false);
-                      setCurrentExperienceText("Currently doing this?");
-                      setCurrentExperience(false);
-                    }}
-                    size={20}
-                    color={"grey"}
-                  />
-                </div>
-                <div>
-                  <form>
-                    <p className="textInputHeaders">Title</p>
-                    <input
-                      required
-                      className="modalTextInputItems"
-                      placeholder="Ex. Your Position, Student Athlete, etc"
-                      type="text"
-                      maxLength="100"
-                      onChange={(text) => {
-                        setExperienceTitleText(text.target.value);
-                        setInvalidExperienceTitle(false);
-                      }}
-                    />
-                    {invalidExperienceTitle && (
+                <div className="modalDatePickerContainer">
+                  <div className="expModalDatePickerItemContainer">
+                    <p className="textInputHeaders">Start Date</p>
+                    <div className="datePickerRow">
+                      <select
+                        className="modalDatePicker"
+                        required
+                        name={"Month"}
+                        onChange={(event) => {
+                          setInvalidExperienceStartDate(false);
+                          setExperienceStartMonth(
+                            event.target.options[event.target.selectedIndex]
+                              .text
+                          );
+                        }}
+                      >
+                        <option selected hidden>
+                          Month
+                        </option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                      </select>
+                      {/* <div style={{width: '0.5%'}}></div> */}
+                      <div className="datePickerRowMiddleDivider"></div>
+                      <select
+                        className="modalDatePicker"
+                        required
+                        name={"Year"}
+                        onChange={(event) => {
+                          setInvalidExperienceStartDate(false);
+                          setExperienceStartYear(
+                            event.target.options[event.target.selectedIndex]
+                              .text
+                          );
+                        }}
+                      >
+                        <option selected hidden>
+                          Year
+                        </option>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                        <option>2012</option>
+                        <option>2011</option>
+                        <option>2010</option>
+                        <option>2009</option>
+                        <option>2008</option>
+                        <option>2007</option>
+                        <option>2006</option>
+                        <option>2005</option>
+                        <option>2004</option>
+                        <option>2003</option>
+                        <option>2002</option>
+                        <option>2001</option>
+                        <option>2000</option>
+                      </select>
+                    </div>
+                    {invalidExperienceStartDate && (
                       <h1 className="createScreenInvalidText">
                         Title is required
                       </h1>
@@ -1783,6 +1740,7 @@ const CreateProfile = (props) => {
                             <option selected hidden>
                               Year
                             </option>
+                            <option>2022</option>
                             <option>2021</option>
                             <option>2020</option>
                             <option>2019</option>
@@ -2188,18 +2146,170 @@ const CreateProfile = (props) => {
                         Title is required
                       </h1>
                     )}
-                    <p className="textInputHeaders">Value</p>
-                    <input
-                      placeholder="Ex: 4.52, 6'1, 3.50"
-                      className="modalTextInputItems"
-                      rows={5}
-                      name={"value"}
-                      onChange={(text) => {
-                        setMeasurableValueText(text.target.value);
-                        setInvalidMeasurableValue(false);
-                      }}
-                    />
-                    {invalidMeasurableValue && (
+                    <p className="presentTimeText">
+                      {currentExperienceText}{" "}
+                      <span
+                        onClick={() => {
+                          setInvalidExperienceEndDate(false);
+                          setCurrentExperience(!currentExperience);
+                          toggleCurrentExperienceText();
+                        }}
+                      >
+                        Click here.
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <p className="textInputHeaders">Description</p>
+                <textarea
+                  style={{ resize: "none" }}
+                  className="modalTextInputItems"
+                  rows={5}
+                  name={"description"}
+                  onChange={(text) => {
+                    setExperienceDescriptionText(text.target.value);
+                  }}
+                />
+              </form>
+            </div>
+            <div>
+              <button
+                className="addEditItemModalButton"
+                type={"button"}
+                onClick={() => checkValidExperience()}
+              >
+                Create
+              </button>
+            </div>
+          </div>
+        </Modal>
+        {/* Experience Modal */}
+        {/* Accomplishment Modal */}
+        <Modal
+          appElement={document.getElementById("root") || undefined}
+          isOpen={accomplishmentModalOpen}
+          onRequestClose={() => {
+            setAccomplishmentModalOpen(false);
+            setAccomplishmentTitleText("");
+            setAccomplishmentDescriptionText("");
+            setAccomplishmentMonthReceived("");
+            setAccomplishmentYearReceived("");
+            setInvalidAccomplishmentTitle(false);
+            setInvalidAccomplishmentDateReceived(false);
+          }}
+          className="accomplishmentModal"
+          overlayClassName="itemAddModalOverlay"
+        >
+          <div>
+            <div className="modalHeaderContainer">
+              <p>Add Accomplishment</p>
+              <MdClose
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setAccomplishmentModalOpen(false);
+                  setAccomplishmentTitleText("");
+                  setAccomplishmentDescriptionText("");
+                  setAccomplishmentMonthReceived("");
+                  setAccomplishmentYearReceived("");
+                  setInvalidAccomplishmentTitle(false);
+                  setInvalidAccomplishmentDateReceived(false);
+                }}
+                size={20}
+                color={"grey"}
+              />
+            </div>
+            <div>
+              <form>
+                <p className="textInputHeaders">Title</p>
+                <input
+                  placeholder="Ex: MVP, State Title, Student Athlete Award"
+                  required
+                  className="modalTextInputItems"
+                  type="text"
+                  maxLength="100"
+                  onChange={(text) => {
+                    setAccomplishmentTitleText(text.target.value);
+                    setInvalidAccomplishmentTitle(false);
+                  }}
+                />
+                {invalidAccomplishmentTitle && (
+                  <h1 className="createScreenInvalidText">Title is required</h1>
+                )}
+                <div className="modalDatePickerContainer">
+                  <div className="accomplishmentMeasurableDatePickerItemContainer">
+                    <p className="textInputHeaders">Date Received</p>
+                    <div className="datePickerRow">
+                      <select
+                        className="modalDatePicker"
+                        required
+                        name={"Month"}
+                        onChange={(event) => {
+                          setInvalidAccomplishmentDateReceived(false);
+                          setAccomplishmentMonthReceived(
+                            event.target.options[event.target.selectedIndex]
+                              .text
+                          );
+                        }}
+                      >
+                        <option selected hidden>
+                          Month
+                        </option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                      </select>
+                      {/* <div style={{width: '0.5%'}}></div> */}
+                      <div className="datePickerRowMiddleDivider"></div>
+                      <select
+                        className="modalDatePicker"
+                        required
+                        name={"Year"}
+                        onChange={(event) => {
+                          setInvalidAccomplishmentDateReceived(false);
+                          setAccomplishmentYearReceived(
+                            event.target.options[event.target.selectedIndex]
+                              .text
+                          );
+                        }}
+                      >
+                        <option selected hidden>
+                          Year
+                        </option>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                        <option>2012</option>
+                        <option>2011</option>
+                        <option>2010</option>
+                        <option>2009</option>
+                        <option>2008</option>
+                        <option>2007</option>
+                        <option>2006</option>
+                        <option>2005</option>
+                        <option>2004</option>
+                        <option>2003</option>
+                        <option>2002</option>
+                        <option>2001</option>
+                        <option>2000</option>
+                      </select>
+                    </div>
+                    {invalidAccomplishmentDateReceived && (
                       <h1 className="createScreenInvalidText">
                         Value is required
                       </h1>
