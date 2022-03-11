@@ -1719,6 +1719,7 @@ const CreateProfile = (props) => {
                         <option selected hidden>
                           Year
                         </option>
+                        <option>2022</option>
                         <option>2021</option>
                         <option>2020</option>
                         <option>2019</option>
@@ -1801,6 +1802,7 @@ const CreateProfile = (props) => {
                             <option selected hidden>
                               Year
                             </option>
+                            <option>2022</option>
                             <option>2021</option>
                             <option>2020</option>
                             <option>2019</option>
@@ -2016,6 +2018,7 @@ const CreateProfile = (props) => {
                         <option selected hidden>
                           Year
                         </option>
+                        <option>2022</option>
                         <option>2021</option>
                         <option>2020</option>
                         <option>2019</option>
